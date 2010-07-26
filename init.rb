@@ -1,1 +1,1 @@
-require 'host_router'
+require 'rails/init'

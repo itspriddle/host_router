@@ -1,12 +1,20 @@
 # Host Router
 
-Create routes based on HTTP_HOST.
+Rails plugin to create routes based on `HTTP_HOST` (or `HTTP_PORT`).
+
+## Installation
+
+    ./script/plugin install git://github.com/itspriddle/host_router.git
 
 ## Usage
 
-	map.connect '/some/path', :controller => 'somecontroller',  :conditions => { :host => 'abc.example.com' }
-	map.connect '/some/path', :controller => 'othercontroller', :conditions => { :hosts => ['xyz.example.com', 'yyz.example.com'] }
+    # Only available for http://abc.example.com/some/path
+    map.connect '/some/path',
+      :controller => 'somecontroller',
+      :conditions => { :host => 'abc.example.com' }
 
-## Notes
+    # Available for any site routing to your app, on port 1234
+    map.connect '/some/path',
+      :controller => 'othercontroller',
+      :conditions => { :port => '1234' }
 
-Put lib/host_router.rb in config/initializers if your Rails version supports initializers.
